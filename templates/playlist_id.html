@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add song</title>
+</head>
+<body>
+    <h1>{{playlist.name}}</h1>
+    <ul>
+        {% for song in playlist.songs %}
+          <li>{{ song.title }} - {{ song.artist }}</li>
+        {% endfor %}
+      </ul>
+      <h2>Add Songs</h2>
+      <form method="POST">
+          {{ form.hidden_tag() }}
+          {% for field in form if field.widget.input_type != 'hidden' %}
+              {{ field.label }}
+              {{ field }}
+          {% endfor %}
+          <button type="submit">Save</button>
+      </form>
+      
+    <a href="/">Go Back To Home</a>
+</body>
+</html>
